@@ -13,6 +13,22 @@ class Movies extends Component {
         this.setState({ movies: newLlst });
     }
     
+    handleAdding = () => {
+        let newLlst = this.state.movies;
+        newLlst.unshift(
+            {
+                _id: "5b21ca3eeb7f6fbccd40003e",
+                title: "New one",
+                genre: { _id: "5b21ca3eeb7f6fbccd40003e", name: "Super" },
+                numberInStock: 2,
+                dailyRentalRate: 4.5,
+                publishDate: "2018-01-08T19:04:28.809Z",
+                like: true
+            }
+        );
+        this.setState({ movies: newLlst });
+    }
+    
   render() {
     return (
     <div>
@@ -23,6 +39,7 @@ class Movies extends Component {
               <th scope="col">Genre</th>
               <th scope="col">Quantity</th>
               <th scope="col">Raiting</th>
+              <th scope="col"></th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -39,7 +56,14 @@ class Movies extends Component {
                     onClick={()=>this.handleDelete(movie)}>
                     Del
                 </button>
-            </td>
+              </td>
+              <td>
+                <button 
+                    className="btn btn-success" 
+                    onClick={this.handleAdding}>
+                    Add
+                </button>
+              </td>
             </tr>
          ))}
          </tbody>

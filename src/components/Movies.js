@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getMovies } from '../services/fakeMovieService';
+import Faker from 'faker';
 import './Movies.css';
 
 class Movies extends Component {
@@ -15,15 +16,16 @@ class Movies extends Component {
     
     handleAdding = () => {
         let newLlst = this.state.movies;
+        const id = Faker.random.uuid()
         newLlst.unshift(
             {
-                _id: "5b21ca3eeb7f6fbccd40003e",
-                title: "New one",
-                genre: { _id: "5b21ca3eeb7f6fbccd40003e", name: "Super" },
-                numberInStock: 2,
-                dailyRentalRate: 4.5,
-                publishDate: "2018-01-08T19:04:28.809Z",
-                like: true
+                _id: id,
+                title: Faker.random.word(),
+                genre: { _id: id, name: Faker.commerce.department() },
+                numberInStock: Faker.random.number(),
+                dailyRentalRate: Faker.random.number(),
+                publishDate: Faker.date.recent(),
+                like: Faker.random.boolean()
             }
         );
         this.setState({ movies: newLlst });
